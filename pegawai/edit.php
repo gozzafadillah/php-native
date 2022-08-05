@@ -1,5 +1,8 @@
 <?php 
+// memanggil db
 include_once("./conn.php");
+
+// Cek user mengisi form update
 if (isset($_POST["update"])){
     $id = $_POST['id'];
     $kd_peg = $_POST['kd_pegawai'];
@@ -12,14 +15,21 @@ if (isset($_POST["update"])){
     $almt = $_POST['almt_peg'];
     $telp = $_POST['telp'];
     
+    // update data
     $result = mysqli_query($conn, "UPDATE tbl_data_pegawai SET kd_peg='$kd_peg',nm_peg='$nm_peg', tgl_lahir='$tgl',jns_klm='$kel',agm='$agm',gol='$gol',jbtn='$jbtn',almt='$almt',no_tlp='$telp' WHERE id=$id");
     
+    // Redirect setelah selesai
     header("location:index.php");
 }
 ?>
 <?php
+    // menangkap id
     $id = $_GET['id'];
+
+    // mengambil data pegawai
     $result = mysqli_query($conn, "SELECT * FROM tbl_data_pegawai WHERE id = $id");
+    
+    // looping data pegawai
     while($peg = mysqli_fetch_array($result)){
             $kode    = $peg['kd_peg'];
             $nama = $peg['nm_peg'];
