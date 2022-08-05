@@ -1,8 +1,11 @@
 <?php 
+// connect ke database
 include_once("./conn.php");
-
+// mengambil pada table data hotel
 $result = mysqli_query($conn, "SELECT * FROM data_hotel");
+// mengambil data checkin
 $pemesan = mysqli_query($conn, "SELECT * FROM checkin");
+// mengambil data checkout
 $dataCheckout = mysqli_query($conn, "SELECT * FROM checkout");
 ?>
 
@@ -30,7 +33,7 @@ $dataCheckout = mysqli_query($conn, "SELECT * FROM checkout");
 
     <center>
         <div class="tambah">
-            <a href="./kamar/tambah_kamar.php">Tambah Kamar</a>
+            <a href="./kamar/tambah_kamar.php"><h4>Tambah Kamar</h4></a>
         </div>
     <table border="1" style="margin:40px 0 ;">
         <tr>

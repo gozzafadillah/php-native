@@ -1,8 +1,8 @@
 <?php
-// Create database connection using config file
+// memanggil database connection
 include_once("../conn.php");
  
-// Fetch all users data from database
+// memanggil semua pada table data_hotel
 $result = mysqli_query($conn, "SELECT * FROM data_hotel");
 ?>
 
@@ -134,6 +134,7 @@ $result = mysqli_query($conn, "SELECT * FROM data_hotel");
                 <th>Edit dan Hapus</th>
             </tr>
             <?php  
+            // looping data result untuk ditampilkan
             while($data = mysqli_fetch_array($result)) {         
                 echo "<tr>";
                 echo "<td>".$data['kd_kamar']."</td>";

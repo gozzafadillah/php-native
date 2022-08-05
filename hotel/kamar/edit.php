@@ -1,7 +1,14 @@
 <?php
+// memanggil dari database
 include_once('../conn.php');
+
+//  menangkap id
 $id = $_GET['id'];
+
+// mengambil data_hotel dari database 
 $result = mysqli_query($conn, "SELECT * FROM data_hotel WHERE id = $id");
+
+// fecth data $result
 while($data = mysqli_fetch_array($result)){
     $id = $data['id'];
     $kd_kamar = $data['kd_kamar'];

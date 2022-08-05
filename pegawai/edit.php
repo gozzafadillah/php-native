@@ -4,6 +4,7 @@ include_once("./conn.php");
 
 // Cek user mengisi form update
 if (isset($_POST["update"])){
+    // menangkap data setelah disubmit dengan method post
     $id = $_POST['id'];
     $kd_peg = $_POST['kd_pegawai'];
     $nm_peg = $_POST['nm_pegawai'];

@@ -1,6 +1,7 @@
 <?php
+// memanggil database
 include_once("../conn.php");
-
+    // menangkap data dari server
     $id = $_POST['id'];
     $kd_kamar = $_POST['kd_kamar'];
     $nm_kamar = $_POST['nm_kamar'];
@@ -11,7 +12,9 @@ include_once("../conn.php");
     $jml_kamar = $_POST['jum_kamar'];
     $hrg_sewa = $_POST['sewa'];
 
+    // update data setelah data di tangkap
     $result = mysqli_query($conn, "UPDATE data_hotel SET kd_kamar='$kd_kamar', nm_kamar='$nm_kamar', jns_kamar='$jns_kamar', kps_kamar='$kps_kamar', lok_kamar='$lok_kamar', fas_kamar='$fas_kamar', jml_kamar=$jml_kamar, hrg_sewa=$hrg_sewa WHERE id=$id");
 
+    // Redirect
     header("location:tambah_kamar.php?kd=KMR_001");
 ?>

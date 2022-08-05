@@ -1,6 +1,9 @@
 <?php
+    // connect database
     include_once("../conn.php");
+    // menangkap id dengan method get
     $id = $_GET['id'];
+    //  mengambil data dari table checkin by id
     $result = mysqli_query($conn, "SELECT * FROM checkin WHERE id = '$id'");
     while($data = mysqli_fetch_array($result)){
         $id_checkin = $data['id_checkin'];
@@ -17,7 +20,7 @@
         $hrg_sewa = $data['hrg_sewa'];
         $total_bayar = $data['total'];
     }
-    $dataCheckin = mysqli_query($conn, "SELECT * FROM checkin");
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

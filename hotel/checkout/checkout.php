@@ -1,7 +1,14 @@
 <?php
+    // connect database
     include_once("../conn.php");
+    
+    // menangkap id dari url dengan method get
     $id = $_GET['id'];
+
+    // mengambil data checkin by id_checkind
     $result = mysqli_query($conn, "SELECT * FROM checkin WHERE id_checkin = '$id'");
+
+    // fect data $result agar dapat ditampilkan dalam table
     while($data = mysqli_fetch_array($result)){
         $kd = $data['kd_kamar'];
         $nm_kamar = $data['nm_kamar'];
@@ -74,10 +81,6 @@
                         <tr>
                             <th>Tanggal Checkout</th> 
                             <td><input type="date" id="tgl_checkout" name="tgl_checkout" value="<?= $tgl_checkout ?>"></td>
-                        </tr>
-                        <tr>
-                            <th>Lama Menginap</th> 
-                            <td><input type="number" name="lm_menginap" id="lm_menginap" value="<?= $lm_menginap ?>"></td>
                         </tr>
                         <tr>
                             <th>Jumlah Kamar disewa</th> 

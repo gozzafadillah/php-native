@@ -1,14 +1,23 @@
 <?php
+    // connect database
     include_once("../conn.php");
+    // menangkap kd dari url dengan method get
     $kd = $_GET['kd'];
+
+    // memanggil data_hotel by kd_kamar
     $result = mysqli_query($conn, "SELECT * FROM data_hotel WHERE kd_kamar = '$kd'");
+    
+    // fecth data result agar dapat ditampilkan dalam table
     while($data = mysqli_fetch_array($result)){
         $kd = $data['kd_kamar'];
         $nm_kamar = $data['nm_kamar'];
         $jenis = $data['jns_kamar'];
         $sewa = $data['hrg_sewa'];
     }
+
+    // memanggil semua data dari table checkin
     $dataCheckin = mysqli_query($conn, "SELECT * FROM checkin");
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -119,6 +128,7 @@
                     <th>Edit & Hapus</th>
                 </tr>
                 <?php
+                // menampilkan $datacheckin dalam table
                     while($data = mysqli_fetch_array($dataCheckin)) {         
                         echo "<tr>";
                         echo "<td>".$data['id_checkin']."</td>";
@@ -141,19 +151,22 @@
     </center>
 
     <script>
+        // calculatsi tanggal
         function CalculateTanggal() {
             let tgl_checkin = document.getElementById("tgl_checkin").value
             let tgl_checkout = document.getElementById("tgl_checkout").value
-
+            
+            // konvert data dari string ke date
             let checkin = new Date(tgl_checkin)
             let checkout = new Date(tgl_checkout)
-
+            
+            // tgl_checkout - tgl_checkin
             let diff_date_time = checkout.getTime() - checkin.getTime()
+            // mengubah data dari date by time ke date by days
+            // diff_date_day = diff_date_time / (100 * 36000 * 24)
             let diff_date_days = diff_date_time / (1000 * 3600 * 24)
 
-            console.log(diff_date_time)
-            console.log(diff_date_days)
-            
+            // memasukan diff_date_days dalam value id "lm_menginap" 
             document.getElementById("lm_menginap").value = diff_date_days
         }
         function CekHarga() {
@@ -161,9 +174,9 @@
             let lama_menginap = document.getElementById('lm_menginap').value
             let jml_kamar = document.getElementById('jml_kamar').value
             let harga = document.getElementById('hrg_sewa').value
-
+            // total kalkulasi
             let total = lama_menginap * jml_kamar * harga
-
+            // memasukan total dalam value id "total_bayar" 
             document.getElementById('total_bayar').value = total
         }
     </script>
