@@ -10,6 +10,8 @@
 
     // fect data $result agar dapat ditampilkan dalam table
     while($data = mysqli_fetch_array($result)){
+        $id = $data['id'];
+        $id_checkin = $data['id_checkin'];
         $kd = $data['kd_kamar'];
         $nm_kamar = $data['nm_kamar'];
         $jenis = $data['jns_kamar'];
@@ -47,8 +49,13 @@
                 <td>
                     <table>
                         <tr>
+                            <td>
+                                <input type="hidden" name="id" value="<?= $id ?>">
+                            </td>
+                        </tr>
+                        <tr>
                             <th>Id Checkout</th> 
-                            <td><input type="text" name="id_checkout"></td>
+                            <td><input type="text" name="id_checkout" value="<?= $id_checkin . "-out" ?>"></td>
                         </tr>
                         <tr>
                             <th>Nama Penyewa</th> 
